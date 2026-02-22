@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloemen Zomerjurk Set - TwinStyle</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p data-nl="🎉 Gratis verzending vanaf €75 | Code: TWINNING" data-en="🎉 Free shipping on orders over €75 | Code: TWINNING">🎉 Gratis verzending vanaf €75 | Code: TWINNING</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-left">
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links desktop-only">
+                    <a href="index.html#shop" data-nl="Shop" data-en="Shop">Shop</a>
+                    <a href="index.html#collections" data-nl="Collecties" data-en="Collections">Collecties</a>
+                    <a href="index.html#about" data-nl="Over Ons" data-en="About">Over Ons</a>
+                </div>
+            </div>
+            
+            <a href="index.html" class="logo">
+                <span class="logo-icon">👨‍👩‍👧‍👦</span>
+                <span class="logo-text">TwinStyle</span>
+            </a>
+            
+            <div class="nav-right">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="nl" title="Nederlands">NL</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                </div>
+                
+                <button class="icon-btn search-btn" aria-label="Zoeken">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn account-btn" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="icon-btn cart-btn" aria-label="Winkelwagen" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html" data-nl="Home" data-en="Home">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="index.html#shop" data-nl="Shop" data-en="Shop">Shop</a>
+            <i class="fas fa-chevron-right"></i>
+            <span data-nl="Bloemen Zomerjurk Set" data-en="Floral Summer Dress Set">Bloemen Zomerjurk Set</span>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image">
+                        <div class="image-placeholder large">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Hoofdafbeelding" data-en="Main Image">Hoofdafbeelding</span>
+                        </div>
+                        <button class="wishlist-btn large" aria-label="Verlanglijst"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="thumbnail-grid">
+                        <div class="thumbnail active">
+                            <div class="image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <div class="image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <div class="image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail">
+                            <div class="image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info-panel">
+                    <div class="product-header">
+                        <span class="product-category" data-nl="Moeder & Dochter" data-en="Mom & Daughter">Moeder & Dochter</span>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(127 <span data-nl="beoordelingen" data-en="reviews">beoordelingen</span>)</span>
+                        </div>
+                    </div>
+
+                    <h1 class="product-name" data-nl="Bloemen Zomerjurk Set" data-en="Floral Summer Dress Set">Bloemen Zomerjurk Set</h1>
+
+                    <p class="product-description" data-nl="Perfect bijpassende set voor moeder en dochter. Gemaakt van ademend katoen met een prachtige bloemenprint. Ideaal voor zomerse gelegenheden, fotoshoots of gewoon een dagje uit." data-en="Perfect matching set for mom and daughter. Made from breathable cotton with a beautiful floral print. Ideal for summer occasions, photoshoots, or just a day out.">
+                        Perfect bijpassende set voor moeder en dochter. Gemaakt van ademend katoen met een prachtige bloemenprint. Ideaal voor zomerse gelegenheden, fotoshoots of gewoon een dagje uit.
+                    </p>
+
+                    <div class="product-price-large">
+                        <span class="current-price">€59,95</span>
+                        <span class="original-price">€79,95</span>
+                        <span class="discount-badge" data-nl="-25% Korting" data-en="-25% Off">-25% Korting</span>
+                    </div>
+
+                    <!-- Mom Size Selector -->
+                    <div class="size-section">
+                        <div class="size-header">
+                            <span class="size-label" data-nl="Maat Mama:" data-en="Mom Size:">Maat Mama:</span>
+                            <a href="#" class="size-guide-link" data-nl="Maatgids" data-en="Size Guide">Maatgids</a>
+                        </div>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="XS">XS</button>
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn active" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                            <button class="size-btn" data-size="XXL">XXL</button>
+                        </div>
+                    </div>
+
+                    <!-- Daughter Size Selector -->
+                    <div class="size-section">
+                        <div class="size-header">
+                            <span class="size-label" data-nl="Maat Dochter:" data-en="Daughter Size:">Maat Dochter:</span>
+                            <span class="age-range" data-nl="(2-12 jaar)" data-en="(2-12 years)">(2-12 jaar)</span>
+                        </div>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="2Y">2J</button>
+                            <button class="size-btn" data-size="3Y">3J</button>
+                            <button class="size-btn active" data-size="4Y">4J</button>
+                            <button class="size-btn" data-size="5Y">5J</button>
+                            <button class="size-btn" data-size="6Y">6J</button>
+                            <button class="size-btn" data-size="8Y">8J</button>
+                            <button class="size-btn" data-size="10Y">10J</button>
+                            <button class="size-btn" data-size="12Y">12J</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Selector -->
+                    <div class="color-section">
+                        <span class="color-label" data-nl="Kleur:" data-en="Color:">Kleur:</span>
+                        <div class="color-options">
+                            <button class="color-btn active" style="background: #FFB6C1;" title="Roze">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="color-btn" style="background: #87CEEB;" title="Blauw"></button>
+                            <button class="color-btn" style="background: #98FB98;" title="Groen"></button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="quantity-section">
+                        <span class="quantity-label" data-nl="Aantal:" data-en="Quantity:">Aantal:</span>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="updateQuantity(-1)">-</button>
+                            <input type="number" value="1" min="1" max="10" id="quantity" readonly>
+                            <button class="qty-btn" onclick="updateQuantity(1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart -->
+                    <div class="cart-actions">
+                        <button class="btn btn-primary btn-large add-to-cart" onclick="addToCart()">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span data-nl="In Winkelwagen" data-en="Add to Cart">In Winkelwagen</span>
+                        </button>
+                        <button class="btn btn-outline btn-large buy-now" data-nl="Direct Kopen" data-en="Buy Now">Direct Kopen</button>
+                    </div>
+
+                    <!-- Product Meta -->
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span data-nl="Op voorraad - binnen 1-2 dagen verzonden" data-en="In stock - ships within 1-2 days">Op voorraad - binnen 1-2 dagen verzonden</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-undo"></i>
+                            <span data-nl="30 dagen retourrecht" data-en="30-day returns">30 dagen retourrecht</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-leaf"></i>
+                            <span data-nl="100% Biologisch katoen" data-en="100% Organic cotton">100% Biologisch katoen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Tabs -->
+    <section class="product-tabs">
+        <div class="container">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="description" data-nl="Beschrijving" data-en="Description">Beschrijving</button>
+                <button class="tab-btn" data-tab="details" data-nl="Specificaties" data-en="Specifications">Specificaties</button>
+                <button class="tab-btn" data-tab="shipping" data-nl="Verzending & Retour" data-en="Shipping & Returns">Verzending & Retour</button>
+                <button class="tab-btn" data-tab="reviews" data-nl="Beoordelingen" data-en="Reviews">Beoordelingen (127)</button>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tab-panel active" id="description">
+                    <h3 data-nl="Over dit product" data-en="About this product">Over dit product</h3>
+                    <p data-nl="Onze Bloemen Zomerjurk Set is het perfecte twinning-outfit voor moeder en dochter. De set bevat twee jurken met dezelfde prachtige bloemenprint - één in volwassen maat en één in kindermaat." data-en="Our Floral Summer Dress Set is the perfect twinning outfit for mom and daughter. The set includes two dresses with the same beautiful floral print - one in adult size and one in kids size.">
+                        Onze Bloemen Zomerjurk Set is het perfecte twinning-outfit voor moeder en dochter. De set bevat twee jurken met dezelfde prachtige bloemenprint - één in volwassen maat en één in kindermaat.
+                    </p>
+                    <h4 data-nl="Kenmerken:" data-en="Features:">Kenmerken:</h4>
+                    <ul>
+                        <li data-nl="Ademend 100% biologisch katoen" data-en="Breathable 100% organic cotton">Ademend 100% biologisch katoen</li>
+                        <li data-nl="Comfortabele pasvorm met elastische taille" data-en="Comfortable fit with elastic waist">Comfortabele pasvorm met elastische taille</li>
+                        <li data-nl="Machinewasbaar op 30°C" data-en="Machine washable at 30°C">Machinewasbaar op 30°C</li>
+                        <li data-nl="Beschikbaar in 3 kleuren" data-en="Available in 3 colors">Beschikbaar in 3 kleuren</li>
+                        <li data-nl="Perfect voor fotoshoots en speciale gelegenheden" data-en="Perfect for photoshoots and special occasions">Perfect voor fotoshoots en speciale gelegenheden</li>
+                    </ul>
+                </div>
+
+                <div class="tab-panel" id="details">
+                    <h3 data-nl="Productspecificaties" data-en="Product Specifications">Productspecificaties</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td data-nl="Materiaal" data-en="Material">Materiaal</td>
+                            <td>100% Biologisch Katoen</td>
+                        </tr>
+                        <tr>
+                            <td data-nl="Pasvorm" data-en="Fit">Pasvorm</td>
+                            <td data-nl="Regular fit" data-en="Regular fit">Regular fit</td>
+                        </tr>
+                        <tr>
+                            <td data-nl="Lengte" data-en="Length">Lengte</td>
+                            <td data-nl="Mama: knielengte / Dochter: knielengte" data-en="Mom: knee length / Daughter: knee length">Mama: knielengte / Dochter: knielengte</td>
+                        </tr>
+                        <tr>
+                            <td data-nl="Mouwen" data-en="Sleeves">Mouwen</td>
+                            <td data-nl="Korte mouwen" data-en="Short sleeves">Korte mouwen</td>
+                        </tr>
+                        <tr>
+                            <td data-nl="Onderhoud" data-en="Care">Onderhoud</td>
+                            <td data-nl="Machinewas 30°C, niet in de droger" data-en="Machine wash 30°C, do not tumble dry">Machinewas 30°C, niet in de droger</td>
+                        </tr>
+                        <tr>
+                            <td data-nl="Gemaakt in" data-en="Made in">Gemaakt in</td>
+                            <td data-nl="Portugal" data-en="Portugal">Portugal</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="tab-panel" id="shipping">
+                    <h3 data-nl="Verzending & Retourneren" data-en="Shipping & Returns">Verzending & Retourneren</h3>
+                    <div class="shipping-info">
+                        <div class="shipping-option">
+                            <i class="fas fa-truck"></i>
+                            <div>
+                                <strong data-nl="Standaard verzending" data-en="Standard shipping">Standaard verzending</strong>
+                                <p data-nl="€4,95 (gratis vanaf €75) - 1-2 werkdagen" data-en="€4,95 (free from €75) - 1-2 business days">€4,95 (gratis vanaf €75) - 1-2 werkdagen</p>
+                            </div>
+                        </div>
+                        <div class="shipping-option">
+                            <i class="fas fa-shipping-fast"></i>
+                            <div>
+                                <strong data-nl="Express verzending" data-en="Express shipping">Express verzending</strong>
+                                <p data-nl="€9,95 - Volgende werkdag geleverd" data-en="€9,95 - Next day delivery">€9,95 - Volgende werkdag geleverd</p>
+                            </div>
+                        </div>
+                        <div class="shipping-option">
+                            <i class="fas fa-undo"></i>
+                            <div>
+                                <strong data-nl="Gratis retourneren" data-en="Free returns">Gratis retourneren</strong>
+                                <p data-nl="30 dagen bedenktijd - retourneer gratis" data-en="30 days return window - return for free">30 dagen bedenktijd - retourneer gratis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="reviews">
+                    <h3 data-nl="Klantbeoordelingen" data-en="Customer Reviews">Klantbeoordelingen</h3>
+                    <div class="reviews-summary">
+                        <div class="rating-large">
+                            <span class="rating-number">4.5</span>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">127 <span data-nl="beoordelingen" data-en="reviews">beoordelingen</span></span>
+                        </div>
+                    </div>
+                    <div class="review-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <span class="reviewer-name">Sophie v.</span>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="review-date">2 weken geleden</span>
+                            </div>
+                            <p data-nl="Absoluut geweldig! Mijn dochter en ik droegen deze jurken naar een bruiloft en we kregen zoveel complimenten. De kwaliteit is uitstekend en de pasvorm is perfect." data-en="Absolutely amazing! My daughter and I wore these dresses to a wedding and we got so many compliments. The quality is excellent and the fit is perfect.">
+                                Absoluut geweldig! Mijn dochter en ik droegen deze jurken naar een bruiloft en we kregen zoveel complimenten. De kwaliteit is uitstekend en de pasvorm is perfect.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title" data-nl="Vaak Samen Gekocht" data-en="Frequently Bought Together">Vaak Samen Gekocht</h2>
+            <div class="products-grid small">
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-nl="Matching Hoofdband Set" data-en="Matching Headband Set">Matching Hoofdband Set</h3>
+                        <div class="product-price">
+                            <span class="price-current">€14,95</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-nl="Twinning Schoenen" data-en="Twinning Shoes">Twinning Schoenen</h3>
+                        <div class="product-price">
+                            <span class="price-current">€39,95</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-nl="Bijpassende Tas" data-en="Matching Bag">Bijpassende Tas</h3>
+                        <div class="product-price">
+                            <span class="price-current">€24,95</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 data-nl="Jouw Winkelwagen" data-en="Your Cart">Jouw Winkelwagen</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p data-nl="Je winkelwagen is leeg" data-en="Your cart is empty">Je winkelwagen is leeg</p>
+                <a href="index.html#shop" class="btn btn-primary" data-nl="Verder Winkelen" data-en="Continue Shopping">Verder Winkelen</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-subtotal">
+                <span data-nl="Subtotaal" data-en="Subtotal">Subtotaal</span>
+                <span class="subtotal-amount" id="cart-subtotal">€0,00</span>
+            </div>
+            <p class="cart-note" data-nl="Verzendkosten berekend bij afrekenen" data-en="Shipping calculated at checkout">Verzendkosten berekend bij afrekenen</p>
+            <button class="btn btn-primary btn-large btn-full" data-nl="Afrekenen" data-en="Checkout">Afrekenen</button>
+            <button class="btn btn-text" onclick="toggleCart()" data-nl="Verder Winkelen" data-en="Continue Shopping">Verder Winkelen</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon">👨‍👩‍👧‍👦</span>
+                        <span class="logo-text">TwinStyle</span>
+                    </a>
+                    <p class="footer-tagline" data-nl="Herinneringen maken, één bijpassende outfit tegelijk." data-en="Making memories, one matching outfit at a time.">Herinneringen maken, één bijpassende outfit tegelijk.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-nl="Shop" data-en="Shop">Shop</h4>
+                    <ul>
+                        <li><a href="#" data-nl="Moeder & Dochter" data-en="Mom & Daughter">Moeder & Dochter</a></li>
+                        <li><a href="#" data-nl="Vader & Zoon" data-en="Dad & Son">Vader & Zoon</a></li>
+                        <li><a href="#" data-nl="Hele Gezin" data-en="Whole Family">Hele Gezin</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-nl="Hulp" data-en="Help">Hulp</h4>
+                    <ul>
+                        <li><a href="#" data-nl="Contact" data-en="Contact">Contact</a></li>
+                        <li><a href="#" data-nl="FAQ" data-en="FAQ">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 TwinStyle. <span data-nl="Alle rechten voorbehouden." data-en="All rights reserved.">Alle rechten voorbehouden.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/product.js"></script>
+</body>
+</html>

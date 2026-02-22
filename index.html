@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwinStyle - Bijpassende Outfits voor het Hele Gezin</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p data-nl="🎉 Gratis verzending vanaf €75 | Code: TWINNING" data-en="🎉 Free shipping on orders over €75 | Code: TWINNING">🎉 Gratis verzending vanaf €75 | Code: TWINNING</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-left">
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links desktop-only">
+                    <a href="#shop" data-nl="Shop" data-en="Shop">Shop</a>
+                    <a href="#collections" data-nl="Collecties" data-en="Collections">Collecties</a>
+                    <a href="#about" data-nl="Over Ons" data-en="About">Over Ons</a>
+                </div>
+            </div>
+            
+            <a href="#" class="logo">
+                <span class="logo-icon">👨‍👩‍👧‍👦</span>
+                <span class="logo-text">TwinStyle</span>
+            </a>
+            
+            <div class="nav-right">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="nl" title="Nederlands">NL</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en" title="English">EN</button>
+                </div>
+                
+                <button class="icon-btn search-btn" aria-label="Zoeken">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn account-btn" aria-label="Account">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="icon-btn cart-btn" aria-label="Winkelwagen" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-links">
+            <a href="#shop" data-nl="Shop" data-en="Shop">Shop</a>
+            <a href="#collections" data-nl="Collecties" data-en="Collections">Collecties</a>
+            <a href="#about" data-nl="Over Ons" data-en="About">Over Ons</a>
+            <a href="#contact" data-nl="Contact" data-en="Contact">Contact</a>
+        </div>
+        <div class="mobile-lang-switcher">
+            <span data-nl="Taal:" data-en="Language:">Taal:</span>
+            <div>
+                <button class="lang-btn active" data-lang="nl">Nederlands</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-placeholder">
+                <i class="fas fa-image"></i>
+                <span data-nl="Hero Afbeelding - Gezin in bijpassende outfits" data-en="Hero Image - Family in matching outfits">Hero Afbeelding - Gezin in bijpassende outfits</span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-tagline" data-nl="TWINNEN IS WINNEN" data-en="TWINNING IS WINNING">TWINNEN IS WINNEN</p>
+            <h1 class="hero-title">
+                <span data-nl="Bijpassende Outfits voor" data-en="Matching Outfits for">Bijpassende Outfits voor</span><br>
+                <span class="highlight" data-nl="Elk Moment" data-en="Every Moment">Elk Moment</span>
+            </h1>
+            <p class="hero-subtitle" data-nl="Van zondagse brunch tot vakantiefoto's, creëer herinneringen in stijl. Duurzaam, comfortabel en absoluut schattig." data-en="From Sunday brunch to holiday photos, create memories in style. Sustainable, comfortable, and absolutely adorable.">
+                Van zondagse brunch tot vakantiefoto's, creëer herinneringen in stijl. Duurzaam, comfortabel en absoluut schattig.
+            </p>
+            <div class="hero-buttons">
+                <a href="#shop" class="btn btn-primary" data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</a>
+                <a href="#collections" class="btn btn-secondary" data-nl="Collecties Bekijken" data-en="View Collections">Collecties Bekijken</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span data-nl="Scroll" data-en="Scroll">Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <section class="features-bar">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-truck"></i>
+                    <div>
+                        <strong data-nl="Gratis Verzending" data-en="Free Shipping">Gratis Verzending</strong>
+                        <span data-nl="Vanaf €75" data-en="On orders over €75">Vanaf €75</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-leaf"></i>
+                    <div>
+                        <strong data-nl="Milieuvriendelijk" data-en="Eco-Friendly">Milieuvriendelijk</strong>
+                        <span data-nl="Duurzame materialen" data-en="Sustainable materials">Duurzame materialen</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-undo"></i>
+                    <div>
+                        <strong data-nl="Makkelijk Retourneren" data-en="Easy Returns">Makkelijk Retourneren</strong>
+                        <span data-nl="30 dagen retourrecht" data-en="30-day return policy">30 dagen retourrecht</span>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-heart"></i>
+                    <div>
+                        <strong data-nl="Met Liefde Gemaakt" data-en="Made with Love">Met Liefde Gemaakt</strong>
+                        <span data-nl="Familiebedrijf" data-en="Family-owned business">Familiebedrijf</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-nl="Blader per Stijl" data-en="Browse by Style">Blader per Stijl</span>
+                <h2 class="section-title" data-nl="Onze Collecties" data-en="Our Collections">Onze Collecties</h2>
+                <p class="section-subtitle" data-nl="Vind de perfecte match voor elke gelegenheid" data-en="Find the perfect match for every occasion">Vind de perfecte match voor elke gelegenheid</p>
+            </div>
+            
+            <div class="collections-grid">
+                <a href="#" class="collection-card large">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Moeder & Dochter Collectie" data-en="Mom & Daughter Collection">Moeder & Dochter Collectie</span>
+                        </div>
+                    </div>
+                    <div class="collection-overlay">
+                        <span class="collection-tag" data-nl="Bestseller" data-en="Bestseller">Bestseller</span>
+                        <h3 data-nl="Moeder & Dochter" data-en="Mom & Daughter">Moeder & Dochter</h3>
+                        <p data-nl="Bijpassende jurken, tops & meer" data-en="Matching dresses, tops & more">Bijpassende jurken, tops & meer</p>
+                        <span class="collection-link"><span data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <a href="#" class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Vader & Zoon Collectie" data-en="Dad & Son Collection">Vader & Zoon Collectie</span>
+                        </div>
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 data-nl="Vader & Zoon" data-en="Dad & Son">Vader & Zoon</h3>
+                        <p data-nl="Shirts, hoodies & t-shirts" data-en="Shirts, hoodies & tees">Shirts, hoodies & t-shirts</p>
+                        <span class="collection-link"><span data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <a href="#" class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Hele Gezin Collectie" data-en="Whole Family Collection">Hele Gezin Collectie</span>
+                        </div>
+                    </div>
+                    <div class="collection-overlay">
+                        <span class="collection-tag new" data-nl="Nieuw" data-en="New">Nieuw</span>
+                        <h3 data-nl="Hele Gezin" data-en="Whole Family">Hele Gezin</h3>
+                        <p data-nl="Gecoördineerde looks voor 3+" data-en="Coordinated looks for 3+">Gecoördineerde looks voor 3+</p>
+                        <span class="collection-link"><span data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <a href="#" class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Vader & Dochter Collectie" data-en="Dad & Daughter Collection">Vader & Dochter Collectie</span>
+                        </div>
+                    </div>
+                    <div class="collection-overlay">
+                        <span class="collection-tag new" data-nl="Trending" data-en="Trending">Trending</span>
+                        <h3 data-nl="Vader & Dochter" data-en="Dad & Daughter">Vader & Dochter</h3>
+                        <p data-nl="Unieke daddy-daughter stijlen" data-en="Unique daddy-daughter styles">Unieke daddy-daughter stijlen</p>
+                        <span class="collection-link"><span data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <a href="#" class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Moeder & Zoon Collectie" data-en="Mom & Son Collection">Moeder & Zoon Collectie</span>
+                        </div>
+                    </div>
+                    <div class="collection-overlay">
+                        <span class="collection-tag" data-nl="Nieuw" data-en="New">Nieuw</span>
+                        <h3 data-nl="Moeder & Zoon" data-en="Mom & Son">Moeder & Zoon</h3>
+                        <p data-nl="Speciale mama-zoon outfits" data-en="Special mom-son outfits">Speciale mama-zoon outfits</p>
+                        <span class="collection-link"><span data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <a href="#" class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Feestdagen Speciaal Collectie" data-en="Holiday Special Collection">Feestdagen Speciaal Collectie</span>
+                        </div>
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 data-nl="Feestdagen Speciaal" data-en="Holiday Specials">Feestdagen Speciaal</h3>
+                        <p data-nl="Seizoensgebonden matching sets" data-en="Seasonal matching sets">Seizoensgebonden matching sets</p>
+                        <span class="collection-link"><span data-nl="Nu Shoppen" data-en="Shop Now">Nu Shoppen</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="shop" class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-nl="Fanfavorieten" data-en="Fan Favorites">Fanfavorieten</span>
+                <h2 class="section-title" data-nl="Trending Nu" data-en="Trending Now">Trending Nu</h2>
+                <p class="section-subtitle" data-nl="Onze meest geliefde bijpassende outfits deze week" data-en="Our most-loved matching outfits this week">Onze meest geliefde bijpassende outfits deze week</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge bestseller" data-nl="Bestseller" data-en="Bestseller">Bestseller</span>
+                    </div>
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Product Afbeelding" data-en="Product Image">Product Afbeelding</span>
+                        </div>
+                        <button class="quick-view-btn" data-nl="Snel Bekijken" data-en="Quick View">Snel Bekijken</button>
+                        <button class="wishlist-btn" aria-label="Verlanglijst"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-nl="Moeder & Dochter" data-en="Mom & Daughter">Moeder & Dochter</span>
+                        <h3 class="product-title" data-nl="Bloemen Zomerjurk Set" data-en="Floral Summer Dress Set">Bloemen Zomerjurk Set</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(127)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">€59,95</span>
+                            <span class="price-original">€79,95</span>
+                            <span class="price-save" data-nl="Bespaar €20" data-en="Save €20">Bespaar €20</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: #FFB6C1;" title="Roze"></span>
+                            <span class="color-option" style="background: #87CEEB;" title="Blauw"></span>
+                            <span class="color-option" style="background: #98FB98;" title="Groen"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge new" data-nl="Nieuw" data-en="New">Nieuw</span>
+                    </div>
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Product Afbeelding" data-en="Product Image">Product Afbeelding</span>
+                        </div>
+                        <button class="quick-view-btn" data-nl="Snel Bekijken" data-en="Quick View">Snel Bekijken</button>
+                        <button class="wishlist-btn" aria-label="Verlanglijst"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-nl="Hele Gezin" data-en="Whole Family">Hele Gezin</span>
+                        <h3 class="product-title" data-nl="Biologisch Katoenen Pyjama Set" data-en="Organic Cotton PJ Set">Biologisch Katoenen Pyjama Set</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(89)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">€89,95</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: #F5F5DC;" title="Beige"></span>
+                            <span class="color-option" style="background: #D3D3D3;" title="Grijs"></span>
+                            <span class="color-option" style="background: #E6E6FA;" title="Lavendel"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Product Afbeelding" data-en="Product Image">Product Afbeelding</span>
+                        </div>
+                        <button class="quick-view-btn" data-nl="Snel Bekijken" data-en="Quick View">Snel Bekijken</button>
+                        <button class="wishlist-btn" aria-label="Verlanglijst"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-nl="Vader & Zoon" data-en="Dad & Son">Vader & Zoon</span>
+                        <h3 class="product-title" data-nl="Klassiek Denim Shirt Duo" data-en="Classic Denim Shirt Duo">Klassiek Denim Shirt Duo</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(64)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">€49,95</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: #4A6FA5;" title="Blauw"></span>
+                            <span class="color-option" style="background: #2F4F4F;" title="Donkergrijs"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badges">
+                        <span class="badge limited" data-nl="Beperkt" data-en="Limited">Beperkt</span>
+                    </div>
+                    <div class="product-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-image"></i>
+                            <span data-nl="Product Afbeelding" data-en="Product Image">Product Afbeelding</span>
+                        </div>
+                        <button class="quick-view-btn" data-nl="Snel Bekijken" data-en="Quick View">Snel Bekijken</button>
+                        <button class="wishlist-btn" aria-label="Verlanglijst"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-nl="Feestdagen" data-en="Holiday">Feestdagen</span>
+                        <h3 class="product-title" data-nl="Kersttrui Gezin Set" data-en="Christmas Sweater Family Set">Kersttrui Gezin Set</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(245)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price-current">€79,95</span>
+                            <span class="price-original">€99,95</span>
+                            <span class="price-save" data-nl="Bespaar €20" data-en="Save €20">Bespaar €20</span>
+                        </div>
+                        <div class="product-colors">
+                            <span class="color-option" style="background: #8B0000;" title="Rood"></span>
+                            <span class="color-option" style="background: #228B22;" title="Groen"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-cta">
+                <a href="#" class="btn btn-outline" data-nl="Alle Producten Bekijken" data-en="View All Products">Alle Producten Bekijken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Size Guide CTA -->
+    <section class="size-guide-cta">
+        <div class="container">
+            <div class="size-guide-content">
+                <div class="size-guide-text">
+                    <h2 data-nl="Twijfel je over de maat?" data-en="Not sure about sizing?">Twijfel je over de maat?</h2>
+                    <p data-nl="Elk gezin is uniek. Gebruik onze uitgebreide maatgids om de perfecte pasvorm voor iedereen te vinden." data-en="Every family is unique. Use our detailed size guide to find the perfect fit for everyone.">
+                        Elk gezin is uniek. Gebruik onze uitgebreide maatgids om de perfecte pasvorm voor iedereen te vinden.
+                    </p>
+                    <a href="#" class="btn btn-primary" data-nl="Maatgids Bekijken" data-en="View Size Guide">Maatgids Bekijken</a>
+                </div>
+                <div class="size-guide-visual">
+                    <div class="size-card mom">
+                        <span class="size-label" data-nl="Mama" data-en="Mom">Mama</span>
+                        <span class="size-range">XS - XXL</span>
+                    </div>
+                    <div class="size-card dad">
+                        <span class="size-label" data-nl="Papa" data-en="Dad">Papa</span>
+                        <span class="size-range">S - 3XL</span>
+                    </div>
+                    <div class="size-card kids">
+                        <span class="size-label" data-nl="Kinderen" data-en="Kids">Kinderen</span>
+                        <span class="size-range">0-3M t/m 14J</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="instagram-feed">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">@twinstyle.nl</span>
+                <h2 class="section-title" data-nl="Deel Jouw Twinning Moment" data-en="Share Your Twinning Moment">Deel Jouw Twinning Moment</h2>
+                <p class="section-subtitle" data-nl="Tag ons voor een kans om in de spotlight te staan" data-en="Tag us for a chance to be featured">Tag ons voor een kans om in de spotlight te staan</p>
+            </div>
+            
+            <div class="instagram-grid">
+                <div class="insta-item">
+                    <div class="image-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-item">
+                    <div class="image-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-item">
+                    <div class="image-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-item">
+                    <div class="image-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-item">
+                    <div class="image-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+                <div class="insta-item">
+                    <div class="image-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2 data-nl="Word Lid van de Familie" data-en="Join the Family">Word Lid van de Familie</h2>
+                    <p data-nl="Schrijf je in voor exclusieve aanbiedingen, nieuwe collecties en twinning inspiratie." data-en="Subscribe for exclusive offers, new arrivals, and twinning inspiration.">
+                        Schrijf je in voor exclusieve aanbiedingen, nieuwe collecties en twinning inspiratie.
+                    </p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="E-mailadres" data-placeholder-nl="E-mailadres" data-placeholder-en="Enter your email" required>
+                        <button type="submit" class="btn btn-primary" data-nl="Inschrijven" data-en="Subscribe">Inschrijven</button>
+                    </div>
+                    <label class="consent-checkbox">
+                        <input type="checkbox" required>
+                        <span data-nl="Ik ga akkoord met het ontvangen van marketing e-mails" data-en="I agree to receive marketing emails">Ik ga akkoord met het ontvangen van marketing e-mails</span>
+                    </label>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span class="logo-icon">👨‍👩‍👧‍👦</span>
+                        <span class="logo-text">TwinStyle</span>
+                    </a>
+                    <p class="footer-tagline" data-nl="Herinneringen maken, één bijpassende outfit tegelijk." data-en="Making memories, one matching outfit at a time.">Herinneringen maken, één bijpassende outfit tegelijk.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-nl="Shop" data-en="Shop">Shop</h4>
+                    <ul>
+                        <li><a href="#" data-nl="Moeder & Dochter" data-en="Mom & Daughter">Moeder & Dochter</a></li>
+                        <li><a href="#" data-nl="Vader & Zoon" data-en="Dad & Son">Vader & Zoon</a></li>
+                        <li><a href="#" data-nl="Hele Gezin" data-en="Whole Family">Hele Gezin</a></li>
+                        <li><a href="#" data-nl="Feestdagen Speciaal" data-en="Holiday Specials">Feestdagen Speciaal</a></li>
+                        <li><a href="#" data-nl="Sale" data-en="Sale">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-nl="Hulp" data-en="Help">Hulp</h4>
+                    <ul>
+                        <li><a href="#" data-nl="Maatgids" data-en="Size Guide">Maatgids</a></li>
+                        <li><a href="#" data-nl="Verzending" data-en="Shipping Info">Verzending</a></li>
+                        <li><a href="#" data-nl="Retourneren & Ruilen" data-en="Returns & Exchanges">Retourneren & Ruilen</a></li>
+                        <li><a href="#" data-nl="Bestelling Volgen" data-en="Track Order">Bestelling Volgen</a></li>
+                        <li><a href="#" data-nl="FAQ" data-en="FAQ">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 data-nl="Bedrijf" data-en="Company">Bedrijf</h4>
+                    <ul>
+                        <li><a href="#" data-nl="Over Ons" data-en="About Us">Over Ons</a></li>
+                        <li><a href="#" data-nl="Duurzaamheid" data-en="Sustainability">Duurzaamheid</a></li>
+                        <li><a href="#" data-nl="Contact" data-en="Contact">Contact</a></li>
+                        <li><a href="#" data-nl="Vacatures" data-en="Careers">Vacatures</a></li>
+                        <li><a href="#" data-nl="Pers" data-en="Press">Pers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 data-nl="Contact" data-en="Contact">Contact</h4>
+                    <p><i class="fas fa-envelope"></i> hello@twinstyle.nl</p>
+                    <p><i class="fas fa-phone"></i> +31 (0)20 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Amsterdam, Nederland</p>
+                    <p class="hours"><i class="fas fa-clock"></i> <span data-nl="ma-vr: 9:00 - 17:00" data-en="Mon-Fri: 9:00 - 17:00">ma-vr: 9:00 - 17:00</span></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-ideal"></i>
+                </div>
+                <div class="legal-links">
+                    <a href="#" data-nl="Privacybeleid" data-en="Privacy Policy">Privacybeleid</a>
+                    <a href="#" data-nl="Algemene Voorwaarden" data-en="Terms of Service">Algemene Voorwaarden</a>
+                    <a href="#" data-nl="Cookiebeleid" data-en="Cookie Policy">Cookiebeleid</a>
+                </div>
+                <p class="copyright">© 2025 TwinStyle. <span data-nl="Alle rechten voorbehouden." data-en="All rights reserved.">Alle rechten voorbehouden.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal quick-view-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 data-nl="Jouw Winkelwagen" data-en="Your Cart">Jouw Winkelwagen</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p data-nl="Je winkelwagen is leeg" data-en="Your cart is empty">Je winkelwagen is leeg</p>
+                <a href="#shop" class="btn btn-primary" onclick="toggleCart()" data-nl="Verder Winkelen" data-en="Continue Shopping">Verder Winkelen</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-subtotal">
+                <span data-nl="Subtotaal" data-en="Subtotal">Subtotaal</span>
+                <span class="subtotal-amount" id="cart-subtotal">€0,00</span>
+            </div>
+            <p class="cart-note" data-nl="Verzendkosten berekend bij afrekenen" data-en="Shipping calculated at checkout">Verzendkosten berekend bij afrekenen</p>
+            <button class="btn btn-primary btn-large btn-full" data-nl="Afrekenen" data-en="Checkout">Afrekenen</button>
+            <button class="btn btn-text" onclick="toggleCart()" data-nl="Verder Winkelen" data-en="Continue Shopping">Verder Winkelen</button>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script>
+        // Language Switcher
+        (function() {
+            const currentLang = localStorage.getItem('language') || 'nl';
+            
+            function switchLanguage(lang) {
+                // Update HTML lang attribute
+                document.documentElement.lang = lang;
+                
+                // Update all elements with data-nl and data-en attributes
+                document.querySelectorAll('[data-nl][data-en]').forEach(el => {
+                    const text = el.getAttribute('data-' + lang);
+                    if (text) {
+                        if (el.tagName === 'INPUT' && el.hasAttribute('data-placeholder-nl')) {
+                            el.placeholder = el.getAttribute('data-placeholder-' + lang);
+                        } else {
+                            el.textContent = text;
+                        }
+                    }
+                });
+                
+                // Update active state on buttons
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                
+                // Save preference
+                localStorage.setItem('language', lang);
+            }
+            
+            // Initialize
+            switchLanguage(currentLang);
+            
+            // Add click handlers
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
