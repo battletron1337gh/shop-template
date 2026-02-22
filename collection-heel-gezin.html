@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hele Gezin Collectie - TwinStyle</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/collection.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="announcement-bar">
+        <p>🎉 Gratis verzending vanaf €75 | Code: TWINNING</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-left">
+                <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                <div class="nav-links desktop-only">
+                    <a href="index.html#shop">Shop</a>
+                    <a href="index.html#collections">Collecties</a>
+                    <a href="index.html#about">Over Ons</a>
+                </div>
+            </div>
+            <a href="index.html" class="logo"><span class="logo-icon">👨‍👩‍👧‍👦</span><span class="logo-text">TwinStyle</span></a>
+            <div class="nav-right">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="nl">NL</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <button class="icon-btn cart-btn" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="index.html#collections">Collecties</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Hele Gezin</span>
+        </div>
+    </div>
+
+    <section class="collection-header">
+        <div class="container">
+            <div class="collection-hero">
+                <div class="collection-image">
+                    <div class="image-placeholder large">
+                        <i class="fas fa-image"></i>
+                        <span>Hele Gezin Hero Afbeelding</span>
+                    </div>
+                </div>
+                <div class="collection-info">
+                    <span class="collection-tag new">Nieuw</span>
+                    <h1>Hele Gezin</h1>
+                    <p>De complete twinning experience! Bijpassende outfits voor mama, papa en de kids. Perfect voor familie fotoshoots, feestdagen en speciale gelegenheden.</p>
+                    <div class="collection-stats">
+                        <div class="stat"><span class="stat-number">32</span><span class="stat-label">Producten</span></div>
+                        <div class="stat"><span class="stat-number">4.9</span><span class="stat-label">Beoordeling</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-products">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-left">
+                    <button class="filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                    <span class="results-count">32 producten</span>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badges"><span class="badge new">Nieuw</span></div>
+                    <a href="product-pyjama-gezin.html" class="product-link">
+                        <div class="product-image"><div class="image-placeholder"><i class="fas fa-image"></i></div></div>
+                    </a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="product-pyjama-gezin.html">Biologisch Katoenen Pyjama Set</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><span>4.9</span><span>(89)</span></div>
+                        <div class="product-price"><span class="price-current">€89,95</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <a href="product-kersttrui-gezin.html" class="product-link">
+                        <div class="product-image"><div class="image-placeholder"><i class="fas fa-image"></i></div></div>
+                    </a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="product-kersttrui-gezin.html">Kersttrui Gezin Set</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><span>5.0</span><span>(245)</span></div>
+                        <div class="product-price"><span class="price-current">€79,95</span><span class="price-original">€99,95</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badges"><span class="badge bestseller">Bestseller</span></div>
+                    <a href="product-tshirt-gezin.html" class="product-link">
+                        <div class="product-image"><div class="image-placeholder"><i class="fas fa-image"></i></div></div>
+                    </a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="product-tshirt-gezin.html">Family T-Shirt Set (4-pack)</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><span>4.7</span><span>(423)</span></div>
+                        <div class="product-price"><span class="price-current">€69,95</span></div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <a href="product-sweater-gezin.html" class="product-link">
+                        <div class="product-image"><div class="image-placeholder"><i class="fas fa-image"></i></div></div>
+                    </a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="product-sweater-gezin.html">Cozy Sweater Collectie</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><span>4.8</span><span>(156)</span></div>
+                        <div class="product-price"><span class="price-current">€119,95</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Jouw Winkelwagen</h3>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Je winkelwagen is leeg</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo"><span class="logo-icon">👨‍👩‍👧‍👦</span><span class="logo-text">TwinStyle</span></a>
+                </div>
+                <div class="footer-links">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="collection-moeder-dochter.html">Moeder & Dochter</a></li>
+                        <li><a href="collection-vader-zoon.html">Vader & Zoon</a></li>
+                        <li><a href="collection-heel-gezin.html">Hele Gezin</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 TwinStyle. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+</html>

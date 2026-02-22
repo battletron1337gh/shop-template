@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klassiek Denim Shirt Duo - TwinStyle</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="announcement-bar">
+        <p>🎉 Gratis verzending vanaf €75 | Code: TWINNING</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-left">
+                <button class="mobile-menu-btn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                <div class="nav-links desktop-only">
+                    <a href="index.html#shop">Shop</a>
+                    <a href="index.html#collections">Collecties</a>
+                    <a href="index.html#about">Over Ons</a>
+                </div>
+            </div>
+            <a href="index.html" class="logo"><span class="logo-icon">👨‍👩‍👧‍👦</span><span class="logo-text">TwinStyle</span></a>
+            <div class="nav-right">
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="nl">NL</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <button class="icon-btn cart-btn" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cart-count">0</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="index.html#shop">Shop</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Klassiek Denim Shirt Duo</span>
+        </div>
+    </div>
+
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <div class="product-images">
+                    <div class="main-image">
+                        <div class="image-placeholder large"><i class="fas fa-image"></i><span>Hoofdafbeelding</span></div>
+                    </div>
+                </div>
+                <div class="product-info-panel">
+                    <span class="product-category">Vader & Zoon</span>
+                    <h1 class="product-name">Klassiek Denim Shirt Duo</h1>
+                    <p class="product-description">Stoere denim shirts voor vader en zoon. Gemaakt van hoogwaardig denim met een klassieke pasvorm. Perfect voor een casual day out of speciale gelegenheden.</p>
+                    <div class="product-price-large">
+                        <span class="current-price">€49,95</span>
+                    </div>
+                    <button class="btn btn-primary btn-large add-to-cart" onclick="addToCart()">
+                        <i class="fas fa-shopping-bag"></i> In Winkelwagen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Jouw Winkelwagen</h3>
+            <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Je winkelwagen is leeg</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo"><span class="logo-icon">👨‍👩‍👧‍👦</span><span class="logo-text">TwinStyle</span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 TwinStyle. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+</html>
