@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoAd Generator - Professionele Occasion Advertenties</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚗 AutoAd Generator</h1>
+            <p>Genereer professionele occasion advertenties voor Marktplaats & Autoscout</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Form Section -->
+            <section class="form-section">
+                <h2>Auto Details</h2>
+                <form id="carForm">
+                    <div class="form-grid">
+                        <!-- Basis Info -->
+                        <div class="form-group">
+                            <label for="merk">Merk *</label>
+                            <input type="text" id="merk" name="merk" placeholder="bijv. Volkswagen" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="model">Model *</label>
+                            <input type="text" id="model" name="model" placeholder="bijv. Golf" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bouwjaar">Bouwjaar *</label>
+                            <input type="number" id="bouwjaar" name="bouwjaar" min="1900" max="2030" placeholder="bijv. 2019" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kmStand">Kilometerstand *</label>
+                            <input type="number" id="kmStand" name="kmStand" min="0" placeholder="bijv. 45000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prijs">Prijs (€) *</label>
+                            <input type="number" id="prijs" name="prijs" min="0" placeholder="bijv. 18500" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="brandstof">Brandstof *</label>
+                            <select id="brandstof" name="brandstof" required>
+                                <option value="">Selecteer...</option>
+                                <option value="Benzine">Benzine</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Elektrisch">Elektrisch</option>
+                                <option value="Hybride">Hybride</option>
+                                <option value="LPG">LPG</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="transmissie">Transmissie *</label>
+                            <select id="transmissie" name="transmissie" required>
+                                <option value="">Selecteer...</option>
+                                <option value="Handgeschakeld">Handgeschakeld</option>
+                                <option value="Automatisch">Automatisch</option>
+                                <option value="CVT">CVT</option>
+                                <option value="Semi-automatisch">Semi-automatisch</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motorinhoud">Motorinhoud (cc)</label>
+                            <input type="number" id="motorinhoud" name="motorinhoud" min="0" placeholder="bijv. 1395">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vermogen">Vermogen (pk)</label>
+                            <input type="number" id="vermogen" name="vermogen" min="0" placeholder="bijv. 150">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kenteken">Kenteken</label>
+                            <input type="text" id="kenteken" name="kenteken" placeholder="bijv. AB-123-CD">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="staat">Staat *</label>
+                            <select id="staat" name="staat" required>
+                                <option value="">Selecteer...</option>
+                                <option value="Als nieuw">Als nieuw</option>
+                                <option value="Zeer goed">Zeer goed</option>
+                                <option value="Goed">Goed</option>
+                                <option value="Redelijk">Redelijk</option>
+                                <option value="Te restaureren">Te restaureren</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apk">APK tot</label>
+                            <input type="month" id="apk" name="apk">
+                        </div>
+                    </div>
+
+                    <!-- Opties -->
+                    <div class="options-section">
+                        <h3>Opties & Uitrusting</h3>
+                        <div class="options-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Airco">
+                                <span>Airco</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Cruise control">
+                                <span>Cruise control</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Navigatie">
+                                <span>Navigatie</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Panoramadak">
+                                <span>Panoramadak</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Lederen bekleding">
+                                <span>Lederen bekleding</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Parkeersensoren">
+                                <span>Parkeersensoren</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Achteruitrijcamera">
+                                <span>Achteruitrijcamera</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Bluetooth">
+                                <span>Bluetooth</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="LED verlichting">
+                                <span>LED verlichting</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Keyless entry">
+                                <span>Keyless entry</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Stoelverwarming">
+                                <span>Stoelverwarming</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Elektrische ramen">
+                                <span>Elektrische ramen</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Elektrische spiegels">
+                                <span>Elektrische spiegels</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Trekhaak">
+                                <span>Trekhaak</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Climate control">
+                                <span>Climate control</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Lane assist">
+                                <span>Lane assist</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Dodehoekdetectie">
+                                <span>Dodehoekdetectie</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="opties" value="Adaptieve cruise control">
+                                <span>Adaptieve cruise control</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Extra Informatie -->
+                    <div class="extra-section">
+                        <h3>Extra Informatie</h3>
+                        <div class="form-group full-width">
+                            <label for="omschrijving">Aanvullende omschrijving</label>
+                            <textarea id="omschrijving" name="omschrijving" rows="4" placeholder="Beschrijf hier extra details over de auto, onderhoudshistorie, reden van verkoop, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">📝 Genereer Advertentie</button>
+                        <button type="button" class="btn btn-secondary" id="resetBtn">↺ Wis Alles</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Generated Ad Section -->
+            <section class="ad-section" id="adSection" style="display: none;">
+                <h2>Gegenereerde Advertentie</h2>
+                
+                <div class="ad-tabs">
+                    <button class="tab-btn active" data-tab="marktplaats">Marktplaats</button>
+                    <button class="tab-btn" data-tab="autoscout">Autoscout24</button>
+                    <button class="tab-btn" data-tab="generic">Algemeen</button>
+                </div>
+
+                <div class="ad-content">
+                    <div class="ad-text-container">
+                        <h3 id="adTitle"></h3>
+                        <textarea id="adText" readonly></textarea>
+                    </div>
+                    <div class="ad-actions">
+                        <button class="btn btn-copy" id="copyBtn">📋 Kopieer Tekst</button>
+                        <button class="btn btn-save" id="saveBtn">💾 Opslaan</button>
+                    </div>
+                </div>
+
+                <div class="ad-preview">
+                    <h4>Voorbeeld Weergave</h4>
+                    <div class="preview-box" id="previewBox"></div>
+                </div>
+            </section>
+
+            <!-- Saved Ads Section -->
+            <section class="saved-section" id="savedSection">
+                <h2>💾 Opgeslagen Advertenties</h2>
+                <div class="saved-list" id="savedList">
+                    <p class="empty-state">Nog geen advertenties opgeslagen</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>AutoAd Generator &copy; 2025 - Professionele occasion advertenties in seconden</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

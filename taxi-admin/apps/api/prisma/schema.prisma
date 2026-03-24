@@ -1,0 +1,326 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  admin
+  user
+  accountant
+}
+
+enum SubscriptionStatus {
+  active
+  canceled
+  past_due
+  unpaid
+  trialing
+}
+
+enum SubscriptionPlan {
+  free
+  basic
+  pro
+}
+
+enum PlatformType {
+  uber
+  bolt
+  manual
+  other
+}
+
+enum PaymentMethod {
+  cash
+  card
+  tikkie
+  other
+}
+
+enum ExpenseCategory {
+  brandstof
+  onderhoud
+  verzekering
+  wegenvignet
+  parkeerkosten
+  telefoon
+  administratie
+  overig
+}
+
+enum VatRate {
+  ZERO @map("0")
+  NINE @map("9")
+  TWENTY_ONE @map("21")
+}
+
+enum ReceiptStatus {
+  pending
+  processing
+  completed
+  failed
+}
+
+enum ReportType {
+  btw_quarterly
+  annual_income
+  expense_summary
+}
+
+enum ReportStatus {
+  draft
+  generated
+  submitted
+}
+
+model User {
+  id                  String    @id @default(uuid()) @db.Uuid
+  email               String    @unique
+  passwordHash        String    @map("password_hash")
+  firstName           String    @map("first_name")
+  lastName            String    @map("last_name")
+  phone               String?
+  kvkNumber           String?   @map("kvk_number")
+  btwNumber           String?   @map("btw_number")
+  address             String?
+  city                String?
+  postalCode          String?   @map("postal_code")
+  birthDate           DateTime? @map("birth_date") @db.Date
+  korSchemeEnabled    Boolean   @default(false) @map("kor_scheme_enabled")
+  role                UserRole  @default(user)
+  isActive            Boolean   @default(true) @map("is_active")
+  emailVerified       Boolean   @default(false) @map("email_verified")
+  onboardingCompleted Boolean   @default(false) @map("onboarding_completed")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+
+  subscriptions       Subscription[]
+  platformConnections PlatformConnection[]
+  rides               Ride[]
+  expenses            Expense[]
+  receipts            Receipt[]
+  vehicles            Vehicle[]
+  taxReports          TaxReport[]
+  auditLogs           AuditLog[]
+  syncJobs            SyncJob[]
+
+  @@map("users")
+}
+
+model Subscription {
+  id                   String             @id @default(uuid()) @db.Uuid
+  userId               String             @map("user_id") @db.Uuid
+  plan                 SubscriptionPlan   @default(free)
+  status               SubscriptionStatus @default(trialing)
+  stripeCustomerId     String?            @map("stripe_customer_id")
+  stripeSubscriptionId String?            @map("stripe_subscription_id")
+  stripePriceId        String?            @map("stripe_price_id")
+  currentPeriodStart   DateTime?          @map("current_period_start")
+  currentPeriodEnd     DateTime?          @map("current_period_end")
+  trialEndsAt          DateTime?          @map("trial_ends_at")
+  canceledAt           DateTime?          @map("canceled_at")
+  createdAt            DateTime           @default(now()) @map("created_at")
+  updatedAt            DateTime           @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("subscriptions")
+}
+
+model PlatformConnection {
+  id             String       @id @default(uuid()) @db.Uuid
+  userId         String       @map("user_id") @db.Uuid
+  platform       PlatformType
+  accessToken    String?      @map("access_token")
+  refreshToken   String?      @map("refresh_token")
+  tokenExpiresAt DateTime?    @map("token_expires_at")
+  externalUserId String?      @map("external_user_id")
+  externalEmail  String?      @map("external_email")
+  isActive       Boolean      @default(true) @map("is_active")
+  lastSyncAt     DateTime?    @map("last_sync_at")
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rides Ride[]
+
+  @@unique([userId, platform])
+  @@map("platform_connections")
+}
+
+model Ride {
+  id                   String        @id @default(uuid()) @db.Uuid
+  userId               String        @map("user_id") @db.Uuid
+  platform             PlatformType
+  platformConnectionId String?       @map("platform_connection_id") @db.Uuid
+  externalRideId       String?       @map("external_ride_id")
+  rideDate             DateTime      @map("ride_date") @db.Date
+  rideTime             DateTime?     @map("ride_time") @db.Time
+  grossAmount          Decimal       @map("gross_amount") @db.Decimal(10, 2)
+  platformCommission   Decimal       @default(0) @map("platform_commission") @db.Decimal(10, 2)
+  netAmount            Decimal       @map("net_amount") @db.Decimal(10, 2)
+  vatRate              VatRate       @default(ZERO) @map("vat_rate")
+  vatAmount            Decimal       @default(0) @map("vat_amount") @db.Decimal(10, 2)
+  paymentMethod        PaymentMethod @default(card) @map("payment_method")
+  description          String?
+  distanceKm           Decimal?      @map("distance_km") @db.Decimal(6, 2)
+  durationMinutes      Int?          @map("duration_minutes")
+  pickupAddress        String?       @map("pickup_address")
+  destinationAddress   String?       @map("destination_address")
+  isManualEntry        Boolean       @default(false) @map("is_manual_entry")
+  syncedFromPlatform   Boolean       @default(false) @map("synced_from_platform")
+  createdAt            DateTime      @default(now()) @map("created_at")
+  updatedAt            DateTime      @updatedAt @map("updated_at")
+
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  platformConnection PlatformConnection? @relation(fields: [platformConnectionId], references: [id])
+
+  @@index([userId])
+  @@index([rideDate])
+  @@index([userId, rideDate])
+  @@map("rides")
+}
+
+model Vehicle {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @map("user_id") @db.Uuid
+  licensePlate  String   @map("license_plate")
+  make          String?
+  model         String?
+  year          Int?
+  fuelType      String?  @map("fuel_type")
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expenses Expense[]
+
+  @@map("vehicles")
+}
+
+model Expense {
+  id               String          @id @default(uuid()) @db.Uuid
+  userId           String          @map("user_id") @db.Uuid
+  expenseDate      DateTime        @map("expense_date") @db.Date
+  category         ExpenseCategory
+  description      String
+  amount           Decimal         @db.Decimal(10, 2)
+  vatRate          VatRate         @default(TWENTY_ONE) @map("vat_rate")
+  vatAmount        Decimal         @default(0) @map("vat_amount") @db.Decimal(10, 2)
+  isBusinessExpense Boolean        @default(true) @map("is_business_expense")
+  isDeductible     Boolean         @default(true) @map("is_deductible")
+  receiptId        String?         @map("receipt_id") @db.Uuid
+  kilometers       Int?
+  vehicleId        String?         @map("vehicle_id") @db.Uuid
+  notes            String?
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  receipt Receipt? @relation(fields: [receiptId], references: [id])
+  vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
+
+  @@index([userId])
+  @@index([expenseDate])
+  @@index([userId, expenseDate])
+  @@map("expenses")
+}
+
+model Receipt {
+  id                 String        @id @default(uuid()) @db.Uuid
+  userId             String        @map("user_id") @db.Uuid
+  filename           String
+  originalFilename   String        @map("original_filename")
+  mimeType           String?       @map("mime_type")
+  fileSize           Int?          @map("file_size")
+  filePath           String        @map("file_path")
+  status             ReceiptStatus @default(pending)
+  extractedData      Json?         @map("extracted_data")
+  extractedAmount    Decimal?      @map("extracted_amount") @db.Decimal(10, 2)
+  extractedVatAmount Decimal?      @map("extracted_vat_amount") @db.Decimal(10, 2)
+  extractedDate      DateTime?     @map("extracted_date") @db.Date
+  extractedMerchant  String?       @map("extracted_merchant")
+  processedAt        DateTime?     @map("processed_at")
+  errorMessage       String?       @map("error_message")
+  expenseId          String?       @map("expense_id") @db.Uuid
+  createdAt          DateTime      @default(now()) @map("created_at")
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expenses Expense[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("receipts")
+}
+
+model TaxReport {
+  id             String       @id @default(uuid()) @db.Uuid
+  userId         String       @map("user_id") @db.Uuid
+  reportType     ReportType   @map("report_type")
+  year           Int
+  quarter        Int?
+  startDate      DateTime     @map("start_date") @db.Date
+  endDate        DateTime     @map("end_date") @db.Date
+  totalIncome    Decimal      @default(0) @map("total_income") @db.Decimal(12, 2)
+  totalExpenses  Decimal      @default(0) @map("total_expenses") @db.Decimal(12, 2)
+  netProfit      Decimal      @default(0) @map("net_profit") @db.Decimal(12, 2)
+  vatCollected   Decimal      @default(0) @map("vat_collected") @db.Decimal(10, 2)
+  vatPaid        Decimal      @default(0) @map("vat_paid") @db.Decimal(10, 2)
+  vatPayable     Decimal      @default(0) @map("vat_payable") @db.Decimal(10, 2)
+  status         ReportStatus @default(draft)
+  pdfUrl         String?      @map("pdf_url")
+  submittedAt    DateTime?    @map("submitted_at")
+  notes          String?
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([year, quarter])
+  @@map("tax_reports")
+}
+
+model AuditLog {
+  id          String    @id @default(uuid()) @db.Uuid
+  userId      String?   @map("user_id") @db.Uuid
+  action      String
+  entityType  String    @map("entity_type")
+  entityId    String?   @map("entity_id") @db.Uuid
+  oldValues   Json?     @map("old_values")
+  newValues   Json?     @map("new_values")
+  ipAddress   String?   @map("ip_address")
+  userAgent   String?   @map("user_agent")
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model SyncJob {
+  id             String       @id @default(uuid()) @db.Uuid
+  userId         String       @map("user_id") @db.Uuid
+  platform       PlatformType
+  status         String       @default("pending")
+  startedAt      DateTime?    @map("started_at")
+  completedAt    DateTime?    @map("completed_at")
+  ridesImported  Int          @default(0) @map("rides_imported")
+  ridesUpdated   Int          @default(0) @map("rides_updated")
+  errorMessage   String?      @map("error_message")
+  createdAt      DateTime     @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("sync_jobs")
+}

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TaxiBoek - Mobile Preview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .phone-frame {
+      width: 100%;
+      max-width: 390px;
+      background: #000;
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+    .phone-screen {
+      background: #F8FAFC;
+      border-radius: 32px;
+      overflow: hidden;
+      min-height: 700px;
+      position: relative;
+    }
+    
+    /* Status Bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 24px 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    /* Screen 1: Welcome */
+    .welcome-screen {
+      background: linear-gradient(135deg, #2D3A8C 0%, #1E2756 100%);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .logo-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin-bottom: 40px;
+    }
+    .logo-ring {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      top: -10px;
+      left: -10px;
+    }
+    .logo-ring-2 {
+      width: 180px;
+      height: 180px;
+      top: -20px;
+      left: -20px;
+      opacity: 0.5;
+    }
+    .car-icon {
+      font-size: 80px;
+      line-height: 140px;
+    }
+    .welcome-title {
+      font-size: 36px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+    .welcome-subtitle {
+      font-size: 16px;
+      color: #F472B6;
+      margin-bottom: 48px;
+    }
+    .btn-primary {
+      background: #F472B6;
+      color: white;
+      padding: 18px 48px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    .login-link {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+    }
+    .decor-circle {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: #F472B6;
+      border-radius: 50%;
+      opacity: 0.1;
+    }
+    
+    /* Screen 2: Dashboard */
+    .dashboard-screen {
+      display: none;
+      min-height: 100%;
+      background: #F8FAFC;
+    }
+    .dashboard-header {
+      background: linear-gradient(135deg, #2D3A8C 0%, #1E2756 100%);
+      padding: 60px 20px 100px;
+      color: white;
+      border-radius: 0 0 30px 30px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .greeting { font-size: 14px; opacity: 0.8; }
+    .user-name { font-size: 24px; font-weight: bold; }
+    .avatar {
+      width: 44px;
+      height: 44px;
+      background: #F472B6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .overview-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .overview-label { font-size: 14px; opacity: 0.8; }
+    .overview-amount { font-size: 36px; font-weight: bold; margin: 8px 0 16px; }
+    .overview-stats {
+      display: flex;
+      align-items: center;
+    }
+    .overview-stat { flex: 1; }
+    .overview-stat-value { font-size: 20px; font-weight: bold; }
+    .overview-stat-label { font-size: 12px; opacity: 0.7; }
+    .overview-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .dashboard-content {
+      padding: 0 20px;
+      margin-top: -40px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1E293B;
+      margin: 24px 0 16px;
+    }
+    .quick-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .quick-action {
+      flex: 1;
+      text-align: center;
+    }
+    .quick-action-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-size: 24px;
+    }
+    .quick-action-text {
+      font-size: 12px;
+      color: #1E293B;
+      font-weight: 500;
+    }
+    
+    .stats-grid {
+      display: flex;
+      gap: 12px;
+    }
+    .stat-card {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+    .stat-value { font-size: 24px; font-weight: bold; color: #1E293B; }
+    .stat-title { font-size: 13px; color: #64748B; margin-top: 4px; }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .ride-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #F1F5F9;
+    }
+    .ride-item:last-child { border-bottom: none; }
+    .ride-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ride-icon {
+      width: 40px;
+      height: 40px;
+      background: #EEF2FF;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .ride-route { font-size: 14px; font-weight: 600; color: #1E293B; }
+    .ride-time { font-size: 12px; color: #64748B; }
+    .ride-amount { font-size: 16px; font-weight: bold; color: #1E293B; }
+    
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 16px 24px;
+      border-top: 1px solid #F1F5F9;
+    }
+    .nav-item { text-align: center; }
+    .nav-item span { display: block; font-size: 20px; margin-bottom: 4px; }
+    .nav-item small { font-size: 11px; color: #64748B; }
+    .nav-item.active small { color: #F472B6; }
+    .nav-center-btn {
+      width: 56px;
+      height: 56px;
+      background: #F472B6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      margin-top: -20px;
+      box-shadow: 0 4px 12px rgba(244,114,182,0.4);
+    }
+    
+    /* Navigation */
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .nav-tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      border: none;
+      font-size: 14px;
+    }
+    .nav-tab.active {
+      background: #F472B6;
+      color: white;
+    }
+    
+    /* Toggle Button */
+    .toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #F472B6;
+      color: white;
+      border: none;
+      padding: 16px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <!-- Status Bar -->
+      <div class="status-bar" style="color: white; position: absolute; top: 0; left: 0; right: 0; z-index: 10;">
+        <span>9:41</span>
+        <span>📶 100%</span>
+      </div>
+      
+      <!-- Screen 1: Welcome -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="decor-circle" style="top: 50px; right: -50px;"></div>
+        <div class="decor-circle" style="bottom: 100px; left: -30px; opacity: 0.3;"></div>
+        
+        <div class="logo-container">
+          <div class="logo-ring"></div>
+          <div class="logo-ring logo-ring-2"></div>
+          <div class="car-icon">🚕</div>
+        </div>
+        
+        <h1 class="welcome-title">TAXIBOEK</h1>
+        <p class="welcome-subtitle">Slimme boekhouding voor taxi chauffeurs</p>
+        
+        <button class="btn-primary" onclick="showDashboard()">AAN DE SLAG</button>
+        <p class="login-link">Al een account? Inloggen</p>
+      </div>
+      
+      <!-- Screen 2: Dashboard -->
+      <div class="dashboard-screen" id="dashboardScreen">
+        <div class="dashboard-header">
+          <div class="status-bar" style="color: white; margin-bottom: 8px;">
+            <span>9:41</span>
+            <span>📶 100%</span>
+          </div>
+          <div class="header-top">
+            <div>
+              <p class="greeting">Goedemorgen,</p>
+              <p class="user-name">Jan</p>
+            </div>
+            <div class="avatar">J</div>
+          </div>
+          <div class="overview-card">
+            <p class="overview-label">Deze maand</p>
+            <p class="overview-amount">€2.845,00</p>
+            <div class="overview-stats">
+              <div class="overview-stat">
+                <p class="overview-stat-value">42</p>
+                <p class="overview-stat-label">Ritten</p>
+              </div>
+              <div class="overview-divider"></div>
+              <div class="overview-stat">
+                <p class="overview-stat-value">€127</p>
+                <p class="overview-stat-label">Gem/rit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="dashboard-content">
+          <h2 class="section-title">Snelle acties</h2>
+          <div class="quick-actions">
+            <div class="quick-action">
+              <div class="quick-action-icon" style="background: #FBCFE8;">➕</div>
+              <p class="quick-action-text">Rit toevoegen</p>
+            </div>
+            <div class="quick-action">
+              <div class="quick-action-icon" style="background: #DBEAFE;">🧾</div>
+              <p class="quick-action-text">Bon uploaden</p>
+            </div>
+            <div class="quick-action">
+              <div class="quick-action-icon" style="background: #DCFCE7;">📄</div>
+              <p class="quick-action-text">BTW Rapport</p>
+            </div>
+          </div>
+          
+          <h2 class="section-title">Overzicht</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: #FBCFE8;">💶</div>
+              <p class="stat-value">€2.845</p>
+              <p class="stat-title">Bruto omzet</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon" style="background: #DBEAFE;">🧾</div>
+              <p class="stat-value">€234</p>
+              <p class="stat-title">Uitgaven</p>
+            </div>
+          </div>
+          
+          <h2 class="section-title">Recente ritten</h2>
+          <div class="card">
+            <div class="ride-item">
+              <div class="ride-info">
+                <div class="ride-icon">🚕</div>
+                <div>
+                  <p class="ride-route">Amsterdam CS → Schiphol</p>
+                  <p class="ride-time">Vandaag • 14:30</p>
+                </div>
+              </div>
+              <p class="ride-amount">€45,00</p>
+            </div>
+            <div class="ride-item">
+              <div class="ride-info">
+                <div class="ride-icon">🚕</div>
+                <div>
+                  <p class="ride-route">Rotterdam → Den Haag</p>
+                  <p class="ride-time">Vandaag • 11:15</p>
+                </div>
+              </div>
+              <p class="ride-amount">€67,50</p>
+            </div>
+            <div class="ride-item">
+              <div class="ride-info">
+                <div class="ride-icon">🚕</div>
+                <div>
+                  <p class="ride-route">Utrecht → Amsterdam</p>
+                  <p class="ride-time">Gisteren • 16:45</p>
+                </div>
+              </div>
+              <p class="ride-amount">€89,00</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bottom-nav">
+          <div class="nav-item active">
+            <span>📊</span>
+            <small>Overzicht</small>
+          </div>
+          <div class="nav-item">
+            <span>🚕</span>
+            <small>Ritten</small>
+          </div>
+          <div class="nav-center-btn">+</div>
+          <div class="nav-item">
+            <span>🧾</span>
+            <small>Bonnetjes</small>
+          </div>
+          <div class="nav-item">
+            <span>⚙️</span>
+            <small>Instellingen</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <button class="toggle-btn" onclick="toggleScreen()">🔄 Wissel scherm</button>
+  
+  <script>
+    let currentScreen = 'welcome';
+    
+    function showDashboard() {
+      document.getElementById('welcomeScreen').style.display = 'none';
+      document.getElementById('dashboardScreen').style.display = 'block';
+      currentScreen = 'dashboard';
+    }
+    
+    function toggleScreen() {
+      if (currentScreen === 'welcome') {
+        showDashboard();
+      } else {
+        document.getElementById('welcomeScreen').style.display = 'flex';
+        document.getElementById('dashboardScreen').style.display = 'none';
+        currentScreen = 'welcome';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: taxiboek-postgres
+    environment:
+      POSTGRES_USER: taxiboek
+      POSTGRES_PASSWORD: taxiboek_password
+      POSTGRES_DB: taxiboek
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taxiboek"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis for BullMQ
+  redis:
+    image: redis:7-alpine
+    container_name: taxiboek-redis
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+
+  # API Backend
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    container_name: taxiboek-api
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://taxiboek:taxiboek_password@postgres:5432/taxiboek
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
+      STRIPE_PRICE_BASIC: ${STRIPE_PRICE_BASIC}
+      STRIPE_PRICE_PRO: ${STRIPE_PRICE_PRO}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      UBER_CLIENT_ID: ${UBER_CLIENT_ID}
+      UBER_CLIENT_SECRET: ${UBER_CLIENT_SECRET}
+      BOLT_CLIENT_ID: ${BOLT_CLIENT_ID}
+      BOLT_CLIENT_SECRET: ${BOLT_CLIENT_SECRET}
+      FRONTEND_URL: http://localhost:3001
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - uploads:/app/uploads
+
+  # Web Frontend
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: taxiboek-web
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3000/api/v1
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+  redis_data:
+  uploads:

@@ -1,0 +1,122 @@
+import { ReceiptsService } from './receipts.service';
+export declare class ReceiptsController {
+    private receiptsService;
+    constructor(receiptsService: ReceiptsService);
+    findAll(req: any, status?: string): Promise<({
+        expenses: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
+            expenseDate: Date;
+            category: import(".prisma/client").$Enums.ExpenseCategory;
+            description: string;
+            amount: import("@prisma/client/runtime/library").Decimal;
+            vatRate: import(".prisma/client").$Enums.VatRate;
+            vatAmount: import("@prisma/client/runtime/library").Decimal;
+            isBusinessExpense: boolean;
+            isDeductible: boolean;
+            kilometers: number | null;
+            notes: string | null;
+            receiptId: string | null;
+            vehicleId: string | null;
+        }[];
+    } & {
+        id: string;
+        createdAt: Date;
+        userId: string;
+        status: import(".prisma/client").$Enums.ReceiptStatus;
+        filename: string;
+        originalFilename: string;
+        mimeType: string | null;
+        fileSize: number | null;
+        filePath: string;
+        extractedData: import("@prisma/client/runtime/library").JsonValue | null;
+        extractedAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedVatAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedDate: Date | null;
+        extractedMerchant: string | null;
+        processedAt: Date | null;
+        errorMessage: string | null;
+        expenseId: string | null;
+    })[]>;
+    findOne(id: string, req: any): Promise<{
+        expenses: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
+            expenseDate: Date;
+            category: import(".prisma/client").$Enums.ExpenseCategory;
+            description: string;
+            amount: import("@prisma/client/runtime/library").Decimal;
+            vatRate: import(".prisma/client").$Enums.VatRate;
+            vatAmount: import("@prisma/client/runtime/library").Decimal;
+            isBusinessExpense: boolean;
+            isDeductible: boolean;
+            kilometers: number | null;
+            notes: string | null;
+            receiptId: string | null;
+            vehicleId: string | null;
+        }[];
+    } & {
+        id: string;
+        createdAt: Date;
+        userId: string;
+        status: import(".prisma/client").$Enums.ReceiptStatus;
+        filename: string;
+        originalFilename: string;
+        mimeType: string | null;
+        fileSize: number | null;
+        filePath: string;
+        extractedData: import("@prisma/client/runtime/library").JsonValue | null;
+        extractedAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedVatAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedDate: Date | null;
+        extractedMerchant: string | null;
+        processedAt: Date | null;
+        errorMessage: string | null;
+        expenseId: string | null;
+    }>;
+    upload(file: Express.Multer.File, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        status: import(".prisma/client").$Enums.ReceiptStatus;
+        filename: string;
+        originalFilename: string;
+        mimeType: string | null;
+        fileSize: number | null;
+        filePath: string;
+        extractedData: import("@prisma/client/runtime/library").JsonValue | null;
+        extractedAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedVatAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedDate: Date | null;
+        extractedMerchant: string | null;
+        processedAt: Date | null;
+        errorMessage: string | null;
+        expenseId: string | null;
+    }>;
+    retryProcessing(id: string, req: any): Promise<{
+        message: string;
+    }>;
+    remove(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        status: import(".prisma/client").$Enums.ReceiptStatus;
+        filename: string;
+        originalFilename: string;
+        mimeType: string | null;
+        fileSize: number | null;
+        filePath: string;
+        extractedData: import("@prisma/client/runtime/library").JsonValue | null;
+        extractedAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedVatAmount: import("@prisma/client/runtime/library").Decimal | null;
+        extractedDate: Date | null;
+        extractedMerchant: string | null;
+        processedAt: Date | null;
+        errorMessage: string | null;
+        expenseId: string | null;
+    }>;
+}

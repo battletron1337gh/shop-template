@@ -1,0 +1,20 @@
+{
+  "name": "autoad-generator",
+  "version": "1.0.0",
+  "description": "Professional car advertisement generator for Marktplaats and Autoscout24",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "car",
+    "advertisement",
+    "generator",
+    "marktplaats",
+    "autoscout",
+    "occasion"
+  ],
+  "author": "AutoAd Generator",
+  "license": "MIT"
+}
