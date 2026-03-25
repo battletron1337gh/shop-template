@@ -1,9 +1,4 @@
 {
-  "/login/page": "app/login/page.js",
-  "/dashboard/kosten/page": "app/dashboard/kosten/page.js",
-  "/dashboard/kosten/nieuw/page": "app/dashboard/kosten/nieuw/page.js",
-  "/dashboard/belasting/page": "app/dashboard/belasting/page.js",
-  "/dashboard/instellingen/page": "app/dashboard/instellingen/page.js",
-  "/dashboard/ritten/page": "app/dashboard/ritten/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js"
 }

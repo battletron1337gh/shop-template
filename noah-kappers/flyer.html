@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Kappers - Flyer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .flyer {
+      width: 210mm;
+      height: 297mm;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    /* Decorative elements */
+    .circle-1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -100px;
+      right: -100px;
+    }
+
+    .circle-2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 2px solid rgba(255,255,255,0.05);
+      border-radius: 50%;
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .accent-line {
+      position: absolute;
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, #e94560, transparent);
+      top: 180px;
+      left: 0;
+    }
+
+    .accent-line-2 {
+      position: absolute;
+      width: 150px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #e94560);
+      bottom: 200px;
+      right: 0;
+    }
+
+    /* Content */
+    .content {
+      padding: 60px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .logo-sub {
+      font-size: 24px;
+      color: #e94560;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .tagline {
+      margin-top: 20px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .service-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .service-item:hover {
+      background: rgba(233, 69, 96, 0.1);
+      border-color: rgba(233, 69, 96, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .service-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .service-price {
+      font-size: 24px;
+      color: #e94560;
+      font-weight: 700;
+    }
+
+    /* Special offer */
+    .offer-box {
+      background: linear-gradient(135deg, #e94560, #c23a51);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin: 30px 0;
+      box-shadow: 0 10px 40px rgba(233, 69, 96, 0.3);
+    }
+
+    .offer-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 10px;
+    }
+
+    .offer-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 15px;
+    }
+
+    .offer-text {
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* Contact info */
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #e94560;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .contact-value {
+      font-size: 16px;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    .social {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .flyer {
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .flyer {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+      }
+      .content {
+        padding: 40px 30px;
+      }
+      .logo-text {
+        font-size: 48px;
+      }
+      .logo-sub {
+        font-size: 18px;
+        letter-spacing: 4px;
+      }
+      .services {
+        grid-template-columns: 1fr;
+      }
+      .contact {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flyer">
+    <!-- Decorative elements -->
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="accent-line"></div>
+    <div class="accent-line-2"></div>
+
+    <div class="content">
+      <!-- Header -->
+      <div class="header">
+        <h1 class="logo-text">NOAH</h1>
+        <p class="logo-sub">Kappers</p>
+        <p class="tagline">"Waar stijl en persoonlijkheid samenkomen"</p>
+      </div>
+
+      <!-- Main content -->
+      <div class="main">
+        <!-- Services -->
+        <div class="services">
+          <div class="service-item">
+            <div class="service-icon">✂️</div>
+            <h3 class="service-title">Knippen</h3>
+            <p class="service-price">€ 25,-</p>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">🎨</div>
+            <h3 class="service-title">Kleuren</h3>
+            <p class="service-price">Vanaf € 45,-</p>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">✨</div>
+            <h3 class="service-title">Highlights</h3>
+            <p class="service-price">Vanaf € 55,-</p>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">🧔</div>
+            <h3 class="service-title">Baard trimmen</h3>
+            <p class="service-price">€ 15,-</p>
+          </div>
+        </div>
+
+        <!-- Special Offer -->
+        <div class="offer-box">
+          <p class="offer-label">Speciale Aanbieding</p>
+          <h2 class="offer-title">20% Korting</h2>
+          <p class="offer-text">Op je eerste bezoek bij Noah Kappers<br>Toon deze flyer op je afspraak</p>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact">
+          <div class="contact-item">
+            <p class="contact-label">Adres</p>
+            <p class="contact-value">Hoofdstraat 123<br>5431 AB Cuijk</p>
+          </div>
+          <div class="contact-item">
+            <p class="contact-label">Contact</p>
+            <p class="contact-value">06-12345678<br>info@noahkappers.nl</p>
+          </div>
+          <div class="contact-item">
+            <p class="contact-label">Openingstijden</p>
+            <p class="contact-value">Ma-Za: 09:00 - 18:00<br>Do: tot 20:00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p class="social">@NOAHKAPPERS • NOAHKAPPERS.NL</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Auto-print prompt (optional)
+    // window.onload = () => window.print();
+  </script>
+</body>
+</html>

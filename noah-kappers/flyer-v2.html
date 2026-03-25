@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Kappers - Flyer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      background: #E8E2D9;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    /* ==================== VOORKANT ==================== */
+    .front {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .front-header {
+      padding: 50px 50px 30px;
+      text-align: center;
+    }
+
+    .front-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 500;
+      color: #1a1a1a;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .front-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 50px 40px;
+    }
+
+    .photo-container {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #d4cfc7 0%, #c4bfb7 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      color: #8a8580;
+    }
+
+    .photo-caption {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #666;
+      font-style: italic;
+    }
+
+    .qr-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .qr-label {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      background: #1a1a1a;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .qr-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #1a1a1a;
+      text-align: center;
+    }
+
+    /* ==================== ACHTERKANT ==================== */
+    .back {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .back-header {
+      padding: 60px 50px 40px;
+      text-align: center;
+    }
+
+    .back-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 500;
+      color: #1a1a1a;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .back-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: #1a1a1a;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 200px;
+      height: 2px;
+      background: #1a1a1a;
+      margin: 30px auto;
+    }
+
+    .back-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .diensten {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .dienst-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .dienst-item:last-child {
+      border-bottom: none;
+    }
+
+    .dienst-naam {
+      font-size: 18px;
+      font-weight: 400;
+      color: #1a1a1a;
+      letter-spacing: 1px;
+    }
+
+    .dienst-prijs {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .qr-section-back {
+      position: absolute;
+      top: 60px;
+      right: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qr-label-back {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      text-align: center;
+      line-height: 1.5;
+      max-width: 100px;
+    }
+
+    .back-footer {
+      background: #2C2C2C;
+      padding: 30px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #E8E2D9;
+      font-size: 13px;
+    }
+
+    .footer-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .page {
+        box-shadow: none;
+        page-break-after: always;
+        margin: 0;
+      }
+      .page:last-child {
+        page-break-after: avoid;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .page {
+        width: 100%;
+        height: auto;
+        min-height: 297mm;
+      }
+      .front-title {
+        font-size: 36px;
+      }
+      .back-title {
+        font-size: 32px;
+      }
+      .back-subtitle {
+        font-size: 24px;
+      }
+      .qr-section-back {
+        position: static;
+        margin: 30px auto;
+      }
+      .back-footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==================== VOORKANT ==================== -->
+  <div class="page front">
+    <div class="front-header">
+      <h1 class="front-title">NOAH KAPPERS</h1>
+    </div>
+
+    <div class="front-content">
+      <!-- Foto placeholder -->
+      <div class="photo-container">
+        <div class="photo-placeholder">
+          🪑
+        </div>
+        <p class="photo-caption">[Foto van de kapperszaak]</p>
+      </div>
+
+      <!-- QR Code -->
+      <div class="qr-section">
+        <p class="qr-label">BOEK JOUW<br>AFSPRAAK<br>VANDAAG</p>
+        <div class="qr-code">
+          <div class="qr-placeholder">
+            QR<br>CODE
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ACHTERKANT ==================== -->
+  <div class="page back">
+    <div class="back-header">
+      <h1 class="back-title">NOAH KAPPERS</h1>
+      <h2 class="back-subtitle">DIENSTEN</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- QR Code rechtsboven -->
+    <div class="qr-section-back">
+      <p class="qr-label-back">BOEK JOUW AFSPRAAK VANDAAG</p>
+      <div class="qr-code">
+        <div class="qr-placeholder">
+          QR<br>CODE
+        </div>
+      </div>
+    </div>
+
+    <div class="back-content">
+      <div class="diensten">
+        <div class="dienst-item">
+          <span class="dienst-naam">Knippen</span>
+          <span class="dienst-prijs">€ 25,00</span>
+        </div>
+        <div class="dienst-item">
+          <span class="dienst-naam">Knippen & Stylen</span>
+          <span class="dienst-prijs">€ 32,50</span>
+        </div>
+        <div class="dienst-item">
+          <span class="dienst-naam">Kleuren</span>
+          <span class="dienst-prijs">Vanaf € 45,00</span>
+        </div>
+        <div class="dienst-item">
+          <span class="dienst-naam">Highlights</span>
+          <span class="dienst-prijs">Vanaf € 55,00</span>
+        </div>
+        <div class="dienst-item">
+          <span class="dienst-naam">Baard Trimmen</span>
+          <span class="dienst-prijs">€ 15,00</span>
+        </div>
+        <div class="dienst-item">
+          <span class="dienst-naam">Wassen & Föhnen</span>
+          <span class="dienst-prijs">€ 18,00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-footer">
+      <div class="footer-info">
+        <div class="footer-item">
+          <span class="footer-icon">🌐</span>
+          <span>www.noahkappers.nl</span>
+        </div>
+        <div class="footer-item">
+          <span class="footer-icon">📍</span>
+          <span>Theo Dobbestraat 189, 6663 RJ Lent</span>
+        </div>
+        <div class="footer-item">
+          <span class="footer-icon">📞</span>
+          <span>06 84812004</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Genereer QR code met een library of gebruik een online service
+    // Voorbeeld: https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://noahkappers.nl
+  </script>
+</body>
+</html>
