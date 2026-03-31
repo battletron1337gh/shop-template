@@ -2,6 +2,22 @@
 
 ## Projecten
 
+### 👗 Montrelle - Fashion Shopify Store
+**Datum:** 31 maart 2026  
+**Locatie:** `/home/battletron/.openclaw/workspace/dropship-store/`  
+**Details:** `memory/MONTRELLE_PROJECT.md`
+
+Franse fashion e-commerce store (Shopify):
+- Modern Shopify theme (Maison Fierce stijl)
+- Video hero support
+- 9 producten (Femme & Homme collecties)
+- Animaties & hover effects
+- Klaar voor dropshipping
+
+**Status:** ✅ Compleet - Klaar voor import
+
+---
+
 ### 🚕 TaxiBoek - Taxi Boekhouding SaaS
 **Datum:** Maart 2026  
 **Locatie:** `/home/battletron/.openclaw/workspace/taxi-admin/`  

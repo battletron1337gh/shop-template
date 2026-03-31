@@ -1,9 +1,9 @@
 // scripts/sync-vwe.ts
 // Sync script om VWE occasions te importeren naar de website
 
-import { vweClient } from '../src/lib/vwe-client';
-import { VWE_CONFIG, VWEOccasion } from '../src/lib/vwe-config';
-import { Car } from '../src/types';
+import { vweClient } from '@/lib/vwe-client';
+import { VWE_CONFIG, VWEOccasion } from '@/lib/vwe-config';
+import { Car } from '@/types';
 import fs from 'fs';
 import path from 'path';
 
